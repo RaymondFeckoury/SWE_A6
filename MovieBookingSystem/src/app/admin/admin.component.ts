@@ -34,6 +34,7 @@ export class AdminComponent implements OnInit {
   }
 
   admin2Route() {
+    console.log("You're not stupid");
     if(this.loginForm.valid){
       let user:any;
       user = {
@@ -45,7 +46,7 @@ export class AdminComponent implements OnInit {
       this.bms.adminLogin(user).subscribe((res) => {
         if(res) {
           localStorage.setItem("adminLoggedIn","true");
-          this.router.navigateByUrl('/admin2');
+          this.router.navigateByUrl('/adminHomePage');
         } else {
           // Server down popup
         }

@@ -54,6 +54,11 @@ export class bmsApiService {
         return this.httpClient.post("http://localhost:1785/api/SignUp",JSON.parse(user),{'headers':headers});
     }
 
+    addMovie(data:any): Observable<any> {
+        const headers= new HttpHeaders().set('content-type', 'application/json;charset=utf-8').set('Access-Control-Allow-Origin', '*');
+        return this.httpClient.post("http://localhost:1785/admin/addmovie",JSON.parse(data),{'headers':headers});
+    }
+
      //verify OTP
      verifyOTP(user:any): Observable<any> {
         const headers= new HttpHeaders().set('content-type', 'application/json;charset=utf-8').set('Access-Control-Allow-Origin', '*');
@@ -97,12 +102,12 @@ export class bmsApiService {
 
     adminReg(user:any): Observable<any> {
         const headers= new HttpHeaders().set('content-type', 'application/json;charset=utf-8').set('Access-Control-Allow-Origin', '*');
-        return this.httpClient.post("http://localhost:1785/adm/newadmin",JSON.parse(user),{'headers':headers});
+        return this.httpClient.post("http://localhost:1785/admin/newadmin",JSON.parse(user),{'headers':headers});
     }
 
     adminLogin(user:any): Observable<any> {
         const headers= new HttpHeaders().set('content-type', 'application/json;charset=utf-8').set('Access-Control-Allow-Origin', '*');
-        return this.httpClient.post("http://localhost:1785/adm/adminlogin",JSON.parse(user),{'headers':headers});
+        return this.httpClient.post("http://localhost:1785/admin/adminlogin",JSON.parse(user),{'headers':headers});
     }
 
 
