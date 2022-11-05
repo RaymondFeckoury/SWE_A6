@@ -8,28 +8,27 @@ import { bmsApiService } from '../../services/bmsapi.service';
   styleUrls: ['./add-new-movie.component.scss']
 })
 export class AddNewMovieComponent implements OnInit {
-  addMovie: FormGroup;
+  addMovieForm: FormGroup;
   genres = ["Action","Horror","Thriller","Comedy","Drama","Adventure","Documentary","Fiction","Mystery","Animation"];
   ratings = ["G: General Audiences","PG: Parental Guidance Suggested","PG-13: Parents Strongly Cautioned","R: Restricted","NC-17: Clearly Adult"];
-  constructor(private fb: FormBuilder, private _bmsAs:bmsApiService) {
-   }
+  constructor(private fb: FormBuilder, private _bmsAs:bmsApiService) {}
 
   ngOnInit(): void {
     this.genres = ["Action","Horror","Thriller","Comedy","Drama","Adventure","Documentary","Fiction","Mystery","Animation"];
     this.ratings = ["G: General Audiences","PG: Parental Guidance Suggested","PG-13: Parents Strongly Cautioned","R: Restricted","NC-17: Clearly Adult"];
-    this.addMovie = this.fb.group({
+    this.addMovieForm = this.fb.group({
       title : ['',[Validators.required]],
-      Synopsis : ['', [Validators.required]],
       cast: ['',[Validators.required]],
-      trailerLink : ['', [Validators.required]],
-      thumbnail : ['',[Validators.required]],
-      genre: ['',[Validators.required]],
-      rating: ['', [Validators.required]],
       director: ['', [Validators.required]],
-      writer: ['',[Validators.required]],
+      producer: ['', [Validators.required]],
+      synopsis : ['', [Validators.required]],
+      category : ['', [Validators.required]],
+      rating: ['', [Validators.required]],
+      /*trailerLink : ['', [Validators.required]],
+      thumbnail : ['',[Validators.required]],
       startDate: ['',[Validators.required]],
       endDate: ['',[Validators.required]],
-      year: ['',[Validators.required]]
+      year: ['',[Validators.required]]*/
     });
   };
 
@@ -39,19 +38,19 @@ export class AddNewMovieComponent implements OnInit {
   }
 
   addNewMovie() {
-    console.log(this.addMovie.value);
-    var data =  {
-      "title": "coolmovie3",
-      "cast": "lots of folks3",
-      "director": "me duh3",
-      "producer": "big dawg3",
-      "synopsis": "idk what this is3",
-      "category": "action3",
-      "rating": "pg-133"
-    };
-    let data2 = JSON.stringify(data);
+    var movie:any;
+    movie =  {
+      title: this.addMovieForm.value.title,
+      cast: this.addMovieForm.value.cast,
+      director: this.addMovieForm.value.director,
+      producer: this.addMovieForm.value.producer,
+      synopsis: this.addMovieForm.value.synopsis,
+      category: this.addMovieForm.value.category,
+      rating: this.addMovieForm.value.rating
+    }
+    let data2 = JSON.stringify(movie);
     this._bmsAs.addMovie(data2).subscribe(res=>{
-      console.log(res," put method result");
+      //console.log(res," put method result");
     });
   }
 
