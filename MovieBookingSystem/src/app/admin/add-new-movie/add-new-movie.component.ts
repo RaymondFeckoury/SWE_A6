@@ -22,13 +22,12 @@ export class AddNewMovieComponent implements OnInit {
       director: ['', [Validators.required]],
       producer: ['', [Validators.required]],
       synopsis : ['', [Validators.required]],
+      trailer: ['', [Validators.required]],
+      thumbnail: ['', [Validators.required]],
+      startdate: ['', [Validators.required]],
+      enddate: ['', [Validators.required]],
       category : ['', [Validators.required]],
-      rating: ['', [Validators.required]],
-      /*trailerLink : ['', [Validators.required]],
-      thumbnail : ['',[Validators.required]],
-      startDate: ['',[Validators.required]],
-      endDate: ['',[Validators.required]],
-      year: ['',[Validators.required]]*/
+      rating: ['', [Validators.required]]
     });
   };
 
@@ -45,12 +44,16 @@ export class AddNewMovieComponent implements OnInit {
       director: this.addMovieForm.value.director,
       producer: this.addMovieForm.value.producer,
       synopsis: this.addMovieForm.value.synopsis,
+      trailer: this.addMovieForm.value.trailer,
+      thumbnail: this.addMovieForm.value.thumbnail,
+      startdate: this.addMovieForm.value.startdate,
+      enddate: this.addMovieForm.value.enddate,
       category: this.addMovieForm.value.category,
       rating: this.addMovieForm.value.rating
     }
     let data2 = JSON.stringify(movie);
     this._bmsAs.addMovie(data2).subscribe(res=>{
-      //console.log(res," put method result");
+      console.log(JSON.stringify(res)," put method result");
     });
   }
 

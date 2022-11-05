@@ -14,13 +14,13 @@
       <span class="addNewMovieformLabel">Synopsis</span>
       <textarea formControlName="synopsis" placeholder="Enter Movie Description"></textarea>
       <span class="addNewMovieformLabel">Trailer</span>
-      <input type="text" formControlName="trailerLink" placeholder="Enter Movie Trailer Link" />
+      <input type="text" formControlName="trailer" placeholder="Enter Movie Trailer Link" />
       <span class="addNewMovieformLabel">Thumbnail</span>
       <input type="file" accept="image/*" formControlName="thumbnail"  placeholder="Upload Thumbnail" />
       <span class="addNewMovieformLabel">Start Date</span>
-      <input type="date" formControlName="startDate" placeholder="Enter Start Date" />
+      <input type="date" formControlName="startdate" placeholder="Enter Start Date" />
       <span class="addNewMovieformLabel">End</span>
-      <input type="date" formControlName="endDate" placeholder="Enter End Date" />
+      <input type="date" formControlName="enddate" placeholder="Enter End Date" />
         <span class="addNewMovieformLabel" >Category:</span>
         <select (change)="updateGenre($event)" formControlName="category">
             <option value="" disabled selected>Select your option</option>
