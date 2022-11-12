@@ -11,7 +11,7 @@ import com.example.controller.UserController;
 import com.example.demo.model.userRegistration;
 import com.example.demo.repo.UserRepo;
 
-@SpringBootApplication(scanBasePackages={"com.example"})
+@SpringBootApplication(scanBasePackages={"com.example.*"})
 public class LearnspringApplication {
 
 	public static void main(String[] args) {

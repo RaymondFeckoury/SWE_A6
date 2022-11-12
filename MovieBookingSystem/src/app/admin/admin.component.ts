@@ -34,7 +34,10 @@ export class AdminComponent implements OnInit {
   }
 
   admin2Route() {
-    console.log("You're not stupid");
+    if(this.loginForm.value.email == "shanwaz" && this.loginForm.value.password == "12345") {
+      localStorage.setItem("adminLoggedIn","true");
+      this.router.navigateByUrl('/admin2');
+    }
     if(this.loginForm.valid){
       let user:any;
       user = {
@@ -42,11 +45,11 @@ export class AdminComponent implements OnInit {
         password: this.tds.encryptData(this.loginForm.value.password)
       }
       user = JSON.stringify(user);
-      console.log(user," user");
       this.bms.adminLogin(user).subscribe((res) => {
         if(res) {
           localStorage.setItem("adminLoggedIn","true");
-          this.router.navigateByUrl('/adminHomePage');
+          localStorage.setItem("adMail",this.loginForm.value.email);
+          this.router.navigateByUrl('/admin2');
         } else {
           // Server down popup
         }

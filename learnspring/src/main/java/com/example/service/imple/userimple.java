@@ -24,9 +24,29 @@ public class userimple implements userservice {
 		return UserRepo.findAll();
 	}
 	@Override
+	@ResponseBody
+	public userRegistration getUserById(int id) throws IdNotFoundException {
+		List<userRegistration> user = UserRepo.findByid(id);
+		if (user.isEmpty())
+			throw new IdNotFoundException("Sorry user with " + id + " not found!");
+		return user.get(0);
+	}
+	/*@Override
+	@ResponseBody
+	public userRegistration (String email) {
+		return UserRepo.;
+	}*/
+	@Override
 	public  void save(userRegistration user) {
 		UserRepo.save(user);
 	}
+	@Override
+	public userRegistration getUserByemail(String email) {
+		// TODO Auto-generated method stub
+		List<userRegistration> user = UserRepo.findByemail(email);
+		return user.get(0);
+	}
+	
 	
 	
 	

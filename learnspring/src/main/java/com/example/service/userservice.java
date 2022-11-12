@@ -12,5 +12,7 @@ public interface userservice {
 	@ResponseBody
 	List<userRegistration> getAllUsers();
 	public void save(userRegistration user);
+	userRegistration getUserById(int id) throws IdNotFoundException;
+	userRegistration getUserByemail(String email);
 	
 }
