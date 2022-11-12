@@ -26,4 +26,10 @@ public class MovieImple implements MovieService {
 		movierepo.save(movie);
 	}
 	
+	/*@Override
+	@ResponseBody
+	public List<Movie> getCurrentlyRunning() {
+		return movierepo.
+	}*/
+	
 }

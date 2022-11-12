@@ -98,7 +98,7 @@ public class UserController {
 		 //ResponseEntity.ok(repo.save(userRegistration));
 		  int vcode=0;
 		  try {
-		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "");
+		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "password");
 		 java.sql.Statement stmt = conn.createStatement();
 		 
          ResultSet resultSet = stmt.executeQuery("SELECT verificationcode FROM users WHERE email = " + "'" + userRegistration.getEmail() + "'");
@@ -122,7 +122,7 @@ public class UserController {
 			 stat="Success";
 			 userRegistration.setActivated("True");
 			 try {
-		            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "");
+		            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "password");
 		            PreparedStatement preparedStatement = conn.prepareStatement("UPDATE users SET activated = ? WHERE email = ?");
 		            preparedStatement.setString(1,userRegistration.getActivated() );
 		            preparedStatement.setString(2, userRegistration.getEmail());

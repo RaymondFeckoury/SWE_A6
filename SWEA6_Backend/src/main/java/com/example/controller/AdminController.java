@@ -1,6 +1,11 @@
 package com.example.controller;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.mail.MessagingException;
 
@@ -108,6 +113,23 @@ public class AdminController {
 	@GetMapping(path = "/allmovies") 
 	public ResponseEntity<?> getMovies() { 
 		return ResponseEntity.status(200).body(ms.getAllMovies());
+	}
+	
+	// Returns the title, rating, and trailer of each "comingsoon" movie
+	@GetMapping(path = "/currentlyrunning") 
+	public ResponseEntity<ResultSet> getComingSoon() { 
+		ResultSet resultSet = null;
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "password");
+			java.sql.Statement stmt = conn.createStatement();
+			stmt = conn.createStatement();
+			resultSet = stmt.executeQuery("SELECT title, rating, trailer FROM movies WHERE currentlyrunning = 1");
+			return ResponseEntity.ok(resultSet);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return ResponseEntity.ok(resultSet);
 	}
 	  
 }

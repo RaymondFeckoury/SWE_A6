@@ -9,5 +9,7 @@ public interface MovieService {
 	@ResponseBody
 	List<Movie> getAllMovies();
 	public void save(Movie movie);
+	/*@ResponseBody
+	List<Movie> getCurrentlyRunning();*/
 	
 }

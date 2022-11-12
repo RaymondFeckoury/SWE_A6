@@ -1,15 +1,18 @@
 package com.example.demo.model;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import com.example.demo.model.Movie;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,30 +26,45 @@ public class UpcomingShow {
 	@GeneratedValue
 	private int id;
 	
-	// Foreign keys
+	// Foreign keys, both one to one
 	private int roomid;
-	private int movieid;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+	private Movie movie;
 	
 	private int numseatsavailable;
 	private Date dateandtime;
 	
 	
-	public UpcomingShow(int id, int roomid, int movieid, int numseatsavailable, Date dateandtime) {
+	
+	public UpcomingShow(int id, int roomid, Movie movie, int numseatsavailable, Date dateandtime) {
 		super();
 		this.id = id;
 		this.roomid = roomid;
-		this.movieid = movieid;
+		this.movie = movie;
 		this.numseatsavailable = numseatsavailable;
 		this.dateandtime = dateandtime;
 	}
+
 	public UpcomingShow() {
 		super();
 	}
+	
 	@Override
 	public String toString() {
-		return "UpcomingShow [id=" + id + ", roomid=" + roomid + ", movieid=" + movieid + ", numseatsavailable="
+		return "UpcomingShow [id=" + id + ", roomid=" + roomid + ", movie=" + movie + ", numseatsavailable="
 				+ numseatsavailable + ", dateandtime=" + dateandtime + "]";
 	}
+	
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -59,12 +77,7 @@ public class UpcomingShow {
 	public void setRoomid(int roomid) {
 		this.roomid = roomid;
 	}
-	public int getMovieid() {
-		return movieid;
-	}
-	public void setMovieid(int movieid) {
-		this.movieid = movieid;
-	}
+	
 	public int getNumseatsavailable() {
 		return numseatsavailable;
 	}

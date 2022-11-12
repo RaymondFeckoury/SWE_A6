@@ -35,8 +35,18 @@ public class Movie {
 	private String category;
 	private String rating;
 	
+	// Initialize to false when movie is initially added
+	// Set to true when admin schedules movie
+	private boolean currentlyrunning;
+	
+	
+
+	
+
+
+
 	public Movie(int id, String title, String cast, String director, String producer, String synopsis, URL trailer,
-			File thumbnail, Date startdate, Date enddate, String category, String rating) {
+			File thumbnail, Date startdate, Date enddate, String category, String rating, boolean currentlyrunning) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -50,20 +60,43 @@ public class Movie {
 		this.enddate = enddate;
 		this.category = category;
 		this.rating = rating;
+		this.currentlyrunning = currentlyrunning;
 	}
+
+
 
 	public Movie() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	
+
+
+
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", cast=" + cast + ", director=" + director + ", producer="
 				+ producer + ", synopsis=" + synopsis + ", trailer=" + trailer + ", thumbnail=" + thumbnail
 				+ ", startdate=" + startdate + ", enddate=" + enddate + ", category=" + category + ", rating=" + rating
-				+ "]";
+				+ ", currentlyrunning=" + currentlyrunning + "]";
 	}
+
+	
+
+	public boolean isCurrentlyrunning() {
+		return currentlyrunning;
+	}
+
+
+
+	public void setCurrentlyrunning(boolean currentlyrunning) {
+		this.currentlyrunning = currentlyrunning;
+	}
+
+
 
 	public int getId() {
 		return id;
