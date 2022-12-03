@@ -160,8 +160,8 @@ public class Homepage {
 		booking.setMid(movieid);
 		int cardid=0;
 		ResultSet resultSet3 = stmt.executeQuery("SELECT cardid FROM paymentcard WHERE cardnumber = "+ "'" + booking.getCardnumber() + "'");
-		while(resultSet2.next()) {
-		        	  cardid = resultSet2.getInt("cardidid");
+		while(resultSet3.next()) {
+		        	  cardid = resultSet3.getInt("cardid");
 		}
 		booking.setCardid(cardid);
 		brepo.save(booking);

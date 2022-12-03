@@ -35,24 +35,26 @@ public class booking {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public booking(int bid, int mid, int screennumber, String ticketCategory, double ticketcost, double taxes,
-			double totalamount, int numberoftcikets, int seatnumbers, String pcode, int cardid,String email,int userid,String title,int cardnumber) {
+	
+	public booking(int bid, int mid, int screennumber, String ticketCategory, double ticketcost, int cardnumber,
+			double taxes, double totalamount, int numberoftcikets, int seatnumbers, String pcode, int cardid,
+			String email, int userid, String title) {
 		super();
 		Bid = bid;
 		Mid = mid;
 		this.screennumber = screennumber;
 		TicketCategory = ticketCategory;
 		this.ticketcost = ticketcost;
+		this.cardnumber = cardnumber;
 		this.taxes = taxes;
 		this.totalamount = totalamount;
 		this.numberoftcikets = numberoftcikets;
 		this.seatnumbers = seatnumbers;
 		this.pcode = pcode;
 		this.cardid = cardid;
-		this.email=email;
-		this.userid=userid;
-		this.title=title;
-		this.cardnumber=cardnumber;
+		this.email = email;
+		this.userid = userid;
+		this.title = title;
 	}
 	public String getTitle() {
 		return title;
@@ -66,6 +68,8 @@ public class booking {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
 	public int getBid() {
 		return Bid;
 	}

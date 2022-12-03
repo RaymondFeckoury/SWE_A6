@@ -185,8 +185,8 @@ public class AdminController {
 	  @PostMapping("/addmovie")
 		public boolean addMovie(@RequestBody MovieEntity movieentity) {
 		  ResponseEntity.ok(movierepo.save(movieentity));
-		 return true;
-			 }
+		  return true;
+	  }
 	  
 	  @PostMapping("/sendpromotion")
 	  public boolean sendpromotion(@RequestBody promotion promo) throws SQLException,MessagingException{

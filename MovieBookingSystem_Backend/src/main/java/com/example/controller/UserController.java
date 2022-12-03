@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.PaymentCard;
 import com.example.demo.model.booking;
+import com.example.demo.model.showtimes;
 import com.example.demo.model.userRegistration;
 import com.example.demo.repo.UserRepo;
 import com.example.demo.repo.PaymentRepo;
@@ -387,6 +388,18 @@ return true;
 //			  return false;
 //		  }
 	  return true;
+	  }
+	  
+	  @PostMapping("/orderhistory")
+	  public String getinfo(@RequestBody userRegistration user)throws SQLException {
+		 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "");
+		 java.sql.Statement stmt = conn.createStatement();
+		 ResultSet resultSet = stmt.executeQuery("SELECT title FROM bookings WHERE email = "+ "'" + user.getEmail() + "'");
+		 String title="";
+		 while(resultSet.next()) {
+			 title = resultSet.getString("title");  
+		 }
+		 return title;
 	  }
 	 
 }
