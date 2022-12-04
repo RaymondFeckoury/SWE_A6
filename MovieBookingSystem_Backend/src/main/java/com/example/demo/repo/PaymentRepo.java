@@ -14,4 +14,5 @@ public interface PaymentRepo extends JpaRepository<PaymentCard,String> {
 	//List<PaymentCard> findByid(int id);
 
 	//void save(PaymentCard card);
+	List<PaymentCard> findByemail(String email);
 }

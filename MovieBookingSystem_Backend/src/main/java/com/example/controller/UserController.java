@@ -420,5 +420,20 @@ return true;
 		  
 	  }
 	  
+	  /*
+	   * Send email
+	   */
+	  @PostMapping("/savebooking")
+	  public void saveBooking(@RequestBody booking booking) {
+		  System.out.println(booking.toString());
+		  brepo.save(booking);
+	  }
+	  
+	  @PostMapping("/retriveCards")
+	  public ResponseEntity<?> carddetail(@RequestBody PaymentCard pc) { 
+
+			return ResponseEntity.status(200).body(paymentRepo.findByemail(pc.getEmail()));
+	  }
+	  
 	 
 }

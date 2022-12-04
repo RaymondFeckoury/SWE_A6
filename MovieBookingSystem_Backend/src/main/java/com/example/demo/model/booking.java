@@ -25,13 +25,13 @@ public class booking {
 	private String email;
 	private String date;
 	private String time;
-	private int screennumber;
-	private int numberoftcikets;
-	private int adultseats;
-	private int childseats;
-	private int seniorseats;
-	private int cardnumber;
-	private double totalamount;
+	private String screennumber;
+	private String numberoftcikets;
+	private String adultseats;
+	private String childseats;
+	private String seniorseats;
+	private String cardnumber;
+	private String totalamount;
 	private String seatnumbers;	
 	
 	public booking() {
@@ -39,8 +39,11 @@ public class booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	public booking(int bid, String title, String email, String date, String time, int screennumber, int numberoftcikets,
-			int adultseats, int childseats, int seniorseats, int cardnumber, double totalamount, String seatnumbers) {
+	
+
+	public booking(int bid, String title, String email, String date, String time, String screennumber,
+			String numberoftcikets, String adultseats, String childseats, String seniorseats, String cardnumber,
+			String totalamount, String seatnumbers) {
 		super();
 		this.bid = bid;
 		this.title = title;
@@ -57,6 +60,7 @@ public class booking {
 		this.seatnumbers = seatnumbers;
 	}
 
+
 	@Override
 	public String toString() {
 		return "booking [bid=" + bid + ", title=" + title + ", email=" + email + ", date=" + date + ", time=" + time
@@ -64,6 +68,7 @@ public class booking {
 				+ adultseats + ", childseats=" + childseats + ", seniorseats=" + seniorseats + ", cardnumber="
 				+ cardnumber + ", totalamount=" + totalamount + ", seatnumbers=" + seatnumbers + "]";
 	}
+
 
 
 	public int getBid() {
@@ -115,76 +120,90 @@ public class booking {
 		this.time = time;
 	}
 
-
-	public int getScreennumber() {
+	
+	
+	public String getScreennumber() {
 		return screennumber;
 	}
 
 
-	public void setScreennumber(int screennumber) {
+
+	public void setScreennumber(String screennumber) {
 		this.screennumber = screennumber;
 	}
 
 
-	public int getNumberoftcikets() {
+
+	public String getNumberoftcikets() {
 		return numberoftcikets;
 	}
 
 
-	public void setNumberoftcikets(int numberoftcikets) {
+
+	public void setNumberoftcikets(String numberoftcikets) {
 		this.numberoftcikets = numberoftcikets;
 	}
 
 
-	public int getAdultseats() {
+
+	public String getAdultseats() {
 		return adultseats;
 	}
 
 
-	public void setAdultseats(int adultseats) {
+
+	public void setAdultseats(String adultseats) {
 		this.adultseats = adultseats;
 	}
 
 
-	public int getChildseats() {
+
+	public String getChildseats() {
 		return childseats;
 	}
 
 
-	public void setChildseats(int childseats) {
+
+	public void setChildseats(String childseats) {
 		this.childseats = childseats;
 	}
 
 
-	public int getSeniorseats() {
+
+	public String getSeniorseats() {
 		return seniorseats;
 	}
 
 
-	public void setSeniorseats(int seniorseats) {
+
+	public void setSeniorseats(String seniorseats) {
 		this.seniorseats = seniorseats;
 	}
 
 
 
-	public int getCardnumber() {
+	public String getCardnumber() {
 		return cardnumber;
 	}
 
 
-	public void setCardnumber(int cardnumber) {
+
+	public void setCardnumber(String cardnumber) {
 		this.cardnumber = cardnumber;
 	}
 
 
-	public double getTotalamount() {
+
+	public String getTotalamount() {
 		return totalamount;
 	}
 
 
-	public void setTotalamount(double totalamount) {
+
+	public void setTotalamount(String totalamount) {
 		this.totalamount = totalamount;
 	}
+
 
 
 	public String getSeatnumbers() {

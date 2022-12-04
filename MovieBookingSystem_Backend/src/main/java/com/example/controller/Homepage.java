@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -155,6 +157,19 @@ public class Homepage {
 	@PostMapping("/addbooking")
 	public void addBooking(@RequestBody booking booking) {
 		brepo.save(booking);
+	}
+	
+	@PostMapping("/getmovieimage")
+	public Map<String, Object>  getmovieimage(@RequestBody MovieEntity me)throws SQLException {
+		Map<String, Object> map = new HashMap<>();
+		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "");
+		java.sql.Statement stmt = conn.createStatement();
+		String image="";
+		ResultSet resultSet = stmt.executeQuery("SELECT thumbnail FROM movies WHERE title = "+ "'" + me.getTitle() + "'");
+		while(resultSet.next()) {
+		        	  map.put("image",resultSet.getString("thumbnail"));
+		}
+		return map;
 	}
 	
 	
