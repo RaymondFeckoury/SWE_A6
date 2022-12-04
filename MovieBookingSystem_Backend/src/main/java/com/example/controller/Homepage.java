@@ -148,24 +148,13 @@ public class Homepage {
 		int userid=0;
 		ResultSet resultSet = stmt.executeQuery("SELECT id FROM users WHERE email = "+ "'" + booking.getEmail() + "'");
 		while(resultSet.next()) {
-		        	  userid = resultSet.getInt("id");
+			userid = resultSet.getInt("id");
 		}
-		booking.setUserid(userid);
-		int movieid=0;
-		ResultSet resultSet2 = stmt.executeQuery("SELECT id FROM movies WHERE title = "+ "'" + booking.getTitle() + "'");
-		while(resultSet2.next()) {
-		        	  movieid = resultSet2.getInt("id");
-		}
-		//System.out.println(urepo.findidByemail(booking.getEmail()));
-		booking.setMid(movieid);
-		int cardid=0;
-		ResultSet resultSet3 = stmt.executeQuery("SELECT cardid FROM paymentcard WHERE cardnumber = "+ "'" + booking.getCardnumber() + "'");
-		while(resultSet2.next()) {
-		        	  cardid = resultSet2.getInt("cardidid");
-		}
-		booking.setCardid(cardid);
-		brepo.save(booking);
 		return true;
+	}
+	@PostMapping("/addbooking")
+	public void addBooking(@RequestBody booking booking) {
+		brepo.save(booking);
 	}
 	
 	

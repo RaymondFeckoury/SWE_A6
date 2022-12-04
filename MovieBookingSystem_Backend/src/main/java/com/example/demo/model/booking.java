@@ -20,139 +20,183 @@ import lombok.ToString;
 public class booking {
 	@Id
 	@GeneratedValue
-	private int Bid;
-	private int Mid;
+	private int bid;
+	private String title;
+	private String email;
+	private String date;
+	private String time;
 	private int screennumber;
-	private String TicketCategory;
-	@Override
-	public String toString() {
-		return "booking [Bid=" + Bid + ", Mid=" + Mid + ", screennumber=" + screennumber + ", TicketCategory="
-				+ TicketCategory + ", ticketcost=" + ticketcost + ", taxes=" + taxes + ", totalamount=" + totalamount
-				+ ", numberoftcikets=" + numberoftcikets + ", seatnumbers=" + seatnumbers + ", pcode=" + pcode
-				+ ", cardid=" + cardid + "]";
-	}
+	private int numberoftcikets;
+	private int adultseats;
+	private int childseats;
+	private int seniorseats;
+	private int cardnumber;
+	private double totalamount;
+	private String seatnumbers;	
+	
 	public booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public booking(int bid, int mid, int screennumber, String ticketCategory, double ticketcost, double taxes,
-			double totalamount, int numberoftcikets, int seatnumbers, String pcode, int cardid,String email,int userid,String title,int cardnumber) {
+
+	public booking(int bid, String title, String email, String date, String time, int screennumber, int numberoftcikets,
+			int adultseats, int childseats, int seniorseats, int cardnumber, double totalamount, String seatnumbers) {
 		super();
-		Bid = bid;
-		Mid = mid;
+		this.bid = bid;
+		this.title = title;
+		this.email = email;
+		this.date = date;
+		this.time = time;
 		this.screennumber = screennumber;
-		TicketCategory = ticketCategory;
-		this.ticketcost = ticketcost;
-		this.taxes = taxes;
-		this.totalamount = totalamount;
 		this.numberoftcikets = numberoftcikets;
+		this.adultseats = adultseats;
+		this.childseats = childseats;
+		this.seniorseats = seniorseats;
+		this.cardnumber = cardnumber;
+		this.totalamount = totalamount;
 		this.seatnumbers = seatnumbers;
-		this.pcode = pcode;
-		this.cardid = cardid;
-		this.email=email;
-		this.userid=userid;
-		this.title=title;
-		this.cardnumber=cardnumber;
 	}
+
+	@Override
+	public String toString() {
+		return "booking [bid=" + bid + ", title=" + title + ", email=" + email + ", date=" + date + ", time=" + time
+				+ ", screennumber=" + screennumber + ", numberoftcikets=" + numberoftcikets + ", adultseats="
+				+ adultseats + ", childseats=" + childseats + ", seniorseats=" + seniorseats + ", cardnumber="
+				+ cardnumber + ", totalamount=" + totalamount + ", seatnumbers=" + seatnumbers + "]";
+	}
+
+
+	public int getBid() {
+		return bid;
+	}
+
+
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+
+
 	public String getTitle() {
 		return title;
 	}
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getBid() {
-		return Bid;
+
+
+	public String getDate() {
+		return date;
 	}
-	public void setBid(int bid) {
-		Bid = bid;
+
+
+	public void setDate(String date) {
+		this.date = date;
 	}
-	public int getMid() {
-		return Mid;
+
+
+	public String getTime() {
+		return time;
 	}
-	public void setMid(int mid) {
-		Mid = mid;
+
+
+	public void setTime(String time) {
+		this.time = time;
 	}
+
+
 	public int getScreennumber() {
 		return screennumber;
 	}
+
+
 	public void setScreennumber(int screennumber) {
 		this.screennumber = screennumber;
 	}
-	public String getTicketCategory() {
-		return TicketCategory;
-	}
-	public void setTicketCategory(String ticketCategory) {
-		TicketCategory = ticketCategory;
-	}
-	public double getTicketcost() {
-		return ticketcost;
-	}
-	public void setTicketcost(double ticketcost) {
-		this.ticketcost = ticketcost;
-	}
-	public double getTaxes() {
-		return taxes;
-	}
-	public void setTaxes(double taxes) {
-		this.taxes = taxes;
-	}
-	public double getTotalamount() {
-		return totalamount;
-	}
-	public void setTotalamount(double totalamount) {
-		this.totalamount = totalamount;
-	}
+
+
 	public int getNumberoftcikets() {
 		return numberoftcikets;
 	}
+
+
 	public void setNumberoftcikets(int numberoftcikets) {
 		this.numberoftcikets = numberoftcikets;
 	}
-	public int getSeatnumbers() {
-		return seatnumbers;
+
+
+	public int getAdultseats() {
+		return adultseats;
 	}
-	public void setSeatnumbers(int seatnumbers) {
-		this.seatnumbers = seatnumbers;
+
+
+	public void setAdultseats(int adultseats) {
+		this.adultseats = adultseats;
 	}
-	public String getPcode() {
-		return pcode;
+
+
+	public int getChildseats() {
+		return childseats;
 	}
-	public void setPcode(String pcode) {
-		this.pcode = pcode;
+
+
+	public void setChildseats(int childseats) {
+		this.childseats = childseats;
 	}
-	public int getCardid() {
-		return cardid;
+
+
+	public int getSeniorseats() {
+		return seniorseats;
 	}
-	public void setCardid(int cardid) {
-		this.cardid = cardid;
+
+
+	public void setSeniorseats(int seniorseats) {
+		this.seniorseats = seniorseats;
 	}
-	private double ticketcost;
-	private int cardnumber;
-	private double taxes;
+
+
+
 	public int getCardnumber() {
 		return cardnumber;
 	}
+
+
 	public void setCardnumber(int cardnumber) {
 		this.cardnumber = cardnumber;
 	}
-	private double totalamount;
-	private int numberoftcikets;
-	private int seatnumbers;
-	private String pcode;
-	private int cardid;
-	private String email;
-	private int userid;
-	private String title;
-	public int getUserid() {
-		return userid;
+
+
+	public double getTotalamount() {
+		return totalamount;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+
+
+	public void setTotalamount(double totalamount) {
+		this.totalamount = totalamount;
 	}
+
+
+	public String getSeatnumbers() {
+		return seatnumbers;
+	}
+
+
+	public void setSeatnumbers(String seatnumbers) {
+		this.seatnumbers = seatnumbers;
+	}
+	
+	
 }
+	
+	

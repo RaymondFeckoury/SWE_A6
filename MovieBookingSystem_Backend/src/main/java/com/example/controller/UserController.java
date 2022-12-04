@@ -53,19 +53,18 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 @RequestMapping("/api")	
 
 public class UserController {
-	@Autowired
-	private UserRepo repo;
-
-	  @Autowired 
-	  private userservice us;
-	  
+	
+	  @Autowired
+	  Emailsenderservice emailsenderservice;
+	
+	  @Autowired
+	  private UserRepo repo;
+	  /*@Autowired 
+	  private userservice us;*/
 	  @Autowired 
 	  private PaymentRepo paymentRepo;
 	  @Autowired 
 	  private PaymentService paymentService;
-	  @Autowired
-	  Emailsenderservice emailsenderservice;
-	  
 	  
 	  @PostMapping("/SignUp")
 	  public Map<String, Object> registerUser(@RequestBody userRegistration userRegistration) throws MessagingException, SQLException {
@@ -132,11 +131,14 @@ public class UserController {
 	  public ResponseEntity<Boolean> userLogin(@RequestBody userRegistration userRegistration) {
 		 return ResponseEntity.ok(repo.existsByEmailAndPassword(userRegistration.getEmail(), userRegistration.getPassword()));
 		  }
+	  
+	  @Autowired 
+	  private userservice us;
+	  
 	  @GetMapping(path = "/allusers") 
-	  public ResponseEntity<?> getUsers() { 
-
+	  public ResponseEntity<?> getUsers() {
 		  return ResponseEntity.status(200).body(us.getAllUsers());
-	}
+	  }
 	  
 	  @PostMapping("/getuserdetails")
 	  public ResponseEntity<userRegistration>
@@ -387,6 +389,23 @@ return true;
 //			  return false;
 //		  }
 	  return true;
+	  }
+	  
+	  @PostMapping("/orderhistory")
+	  public List<List<String>> orderHistory(@RequestBody userRegistration userRegistration) throws SQLException {
+		  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "");
+		  java.sql.Statement stmt = conn.createStatement();
+		  ResultSet resultSet = stmt.executeQuery("SELECT title, totalamount FROM bookings WHERE email = "+ "'" + userRegistration.getEmail() + "'");
+		  List<String> data = new ArrayList<>();
+		  List<String> data1 = new ArrayList<>();
+		  while(resultSet.next()) {
+	     	  data.add(resultSet.getString("title"));
+	     	  data1.add(resultSet.getString("totalamount"));
+		  }
+		  List<List<String>> allData = new ArrayList<>();
+		  allData.add(data);
+		  allData.add(data1);
+		  return allData;
 	  }
 	 
 }

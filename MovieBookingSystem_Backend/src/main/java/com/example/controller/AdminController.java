@@ -57,16 +57,17 @@ import com.mysql.cj.jdbc.exceptions.SQLError;
 @CrossOrigin(origins="http://localhost:4200") 
 @RequestMapping("/admin")	
 public class AdminController {
-	@Autowired
-	private AdminRepo repo;
-
 	
+	  @Autowired
+	  Emailsenderservice emailsenderservice;
+	  
+	  @Autowired
+	  private AdminRepo repo;
 	  @Autowired 
 	  private AdminService as;
 	  @Autowired
 	  UserRepo ur;
-	  @Autowired
-	  Emailsenderservice emailsenderservice;
+	  
 	  @Autowired
 	  promotionrepo prom;
 	  @Autowired
