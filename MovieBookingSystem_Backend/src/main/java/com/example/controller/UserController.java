@@ -36,8 +36,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.PaymentCard;
 import com.example.demo.model.booking;
+import com.example.demo.model.showseats;
 import com.example.demo.model.userRegistration;
 import com.example.demo.repo.UserRepo;
+import com.example.demo.repo.bookingrepo;
 import com.example.demo.repo.PaymentRepo;
 import com.example.excepion.IdNotFoundException;
 import com.example.service.userservice;
@@ -65,6 +67,9 @@ public class UserController {
 	  private PaymentRepo paymentRepo;
 	  @Autowired 
 	  private PaymentService paymentService;
+	  
+	  @Autowired
+	  bookingrepo brepo;
 	  
 	  @PostMapping("/SignUp")
 	  public Map<String, Object> registerUser(@RequestBody userRegistration userRegistration) throws MessagingException, SQLException {
@@ -391,7 +396,7 @@ return true;
 	  return true;
 	  }
 	  
-	  @PostMapping("/orderhistory")
+	  /*@PostMapping("/orderhistory")
 	  public List<List<String>> orderHistory(@RequestBody userRegistration userRegistration) throws SQLException {
 		  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemabooking", "root", "");
 		  java.sql.Statement stmt = conn.createStatement();
@@ -406,6 +411,14 @@ return true;
 		  allData.add(data);
 		  allData.add(data1);
 		  return allData;
+	  }*/
+	
+	  
+	  @PostMapping("/orderhistory")
+	  public List<booking> getOrderHistory(@RequestBody userRegistration userRegistration) throws SQLException {
+		  return brepo.findByemail(userRegistration.getEmail());
+		  
 	  }
+	  
 	 
 }
